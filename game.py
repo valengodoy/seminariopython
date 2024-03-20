@@ -10,8 +10,8 @@ words = ["python", "programación", "computadora", "código", "desarrollo",
 secret_word = random.choice(words) 
 #Contador de intentos
 cont_attempts = 0
-# Número máximo de intentos permitidos
-max_attempts = 10 
+# Número máximo de errores permitidos
+max_errors = 10
 # Lista para almacenar las letras adivinadas 
 guessed_letters = []
 
@@ -22,8 +22,8 @@ word_displayed = "_" * len(secret_word)
 # Mostrar la palabra parcialmente adivinada 
 print(f"Palabra: {word_displayed}")
 
-#Si no hizo todos los intentos preguntar nueva letra a ingresar
-while cont_attempts != max_attempts:
+#Si no llego a la maxima cantidad de errores se ingresa letra y evalua
+while cont_attempts != max_errors:
     # Pedir al jugador que ingrese una letra 
     letter = input("Ingresa una letra: ").lower()
 
@@ -40,8 +40,7 @@ while cont_attempts != max_attempts:
             print("¡Bien hecho! La letra está en la palabra.") 
         else:
             print("Lo siento, la letra no está en la palabra.")
-        # Sumo un intento
-        cont_attempts+= 1
+            cont_attempts+=1
     #Si se ingresa un valor vacio muestra que es invalido y no suma intentos
     else:
         print('Valor invalido. Intentelo otra vez')
@@ -62,5 +61,5 @@ while cont_attempts != max_attempts:
         print(f"¡Felicidades! Has adivinado la palabra secreta: {secret_word}") 
         break 
 else:
-    print(f"¡Oh no! Has agotado tus {max_attempts} intentos.")
+    print(f"¡Oh no! Has alcanzdo la maxima cantidad de erorres: {max_errors} errores. ")
     print(f"La palabra secreta era: {secret_word}")
